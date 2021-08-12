@@ -5,9 +5,6 @@ from datetime import datetime
 import os
 import shutil
 
-"""
-Which is the abstraction vs implementation
-"""
 
 class NoteWriter(ABC):
     """
@@ -63,10 +60,10 @@ class FileFolderStorage(NoteWriter):
             current_id = 0
         else:
             with open(FileFolderStorage.NOTE_ID_FILE, 'r') as current_id_file:
-                current_id = int(current_id_file.readline().strip()) + 1
+                current_id = int(current_id_file.readline().strip())
 
         with open(FileFolderStorage.NOTE_ID_TEMP_FILE, 'w') as temp_file:
-            temp_file.write(str(current_id))
+            temp_file.write(str(current_id + 1))
         
         shutil.move(FileFolderStorage.NOTE_ID_TEMP_FILE, FileFolderStorage.NOTE_ID_FILE)
 

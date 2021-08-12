@@ -21,7 +21,6 @@ class EditorInput(NoteInput):
     """
     Obtains note input from the default editor (given by the EDITOR environment variable). Defaults to Vim.
     """
-
     EDITOR = os.environ.get('EDITOR','vim')
 
     def get_note(self) -> str:
